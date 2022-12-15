@@ -1,8 +1,5 @@
 import React from "react";
 
-import memesData from "../memesData";
-// console.log(memesData);
-
 export default function Meme() {
   const [meme, setMeme] = React.useState({
     topText: "",
@@ -24,7 +21,7 @@ export default function Meme() {
   function getMemeImages() {
     const memesArray = allMemes;
     const randomMeme = Math.floor(Math.random() * memesArray.length);
-    console.log(randomMeme);
+    // console.log(randomMeme);
     const url = memesArray[randomMeme].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
