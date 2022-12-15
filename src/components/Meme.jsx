@@ -12,10 +12,6 @@ export default function Meme() {
 
   const [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
-  // const [memeImages, setMemeImages] = React.useState(
-  //   "https://i.imgflip.com/30b1gx.jpg"
-  // );
-
   function getMemeImages() {
     const memesArray = allMemeImages.data.memes;
     const randomMeme = Math.floor(Math.random() * memesArray.length);
@@ -26,6 +22,13 @@ export default function Meme() {
       randomImage: url,
     }));
   }
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
   return (
     <main className="p-8 mt-8 md:mt-0 md:p-20">
       <div className="grid grid-cols-2  items-center jusify-center md:w-9/12 mx-auto gap-4 ">
@@ -33,11 +36,17 @@ export default function Meme() {
           type="text"
           placeholder="Top Text"
           className="border border-3 p-3 md:p-4 text-lg font-Karla rounded-lg"
+          name="topText"
+          value={meme.topText}
+          onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Bottom Text"
           className="border border-3 p-3 md:p-4 text-lg font-Karla rounded-lg "
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleChange}
         />
         <button
           onClick={getMemeImages}
@@ -53,10 +62,10 @@ export default function Meme() {
           className="w-full mt-8 object-cotain rounded-lg shadow-xl"
         />
         <h3 className="text-center text-white shadow text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute  top-9 md:top-20">
-          Shut up
+          {meme.topText}
         </h3>
         <h3 className="text-center text-white shadow text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute top-3/4 md:top-3/4">
-          Shut up
+          {meme.bottomText}
         </h3>
       </div>
     </main>
