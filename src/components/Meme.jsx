@@ -10,10 +10,19 @@ export default function Meme() {
     randomImage: "https://i.imgflip.com/1c1uej.jpg",
   });
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
+  const [allMemes, setAllMemes] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchMemes() {
+      const results = await fetch("https://api.imgflip.com/get_memes");
+      const data = await results.json();
+      setAllMemes(data.data.memes);
+    }
+    fetchMemes();
+  }, []);
 
   function getMemeImages() {
-    const memesArray = allMemeImages.data.memes;
+    const memesArray = allMemes;
     const randomMeme = Math.floor(Math.random() * memesArray.length);
     console.log(randomMeme);
     const url = memesArray[randomMeme].url;
@@ -61,10 +70,10 @@ export default function Meme() {
           alt=""
           className="w-full mt-8 object-cotain rounded-lg shadow-xl"
         />
-        <h3 className="text-center text-white  bg-black text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute  top-9 md:top-20">
+        <h3 className="text-center text-white w-9/12  bg-black text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute  top-9 md:top-20">
           {meme.topText}
         </h3>
-        <h3 className="text-center text-white  bg-black text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute top-3/4 md:top-3/4">
+        <h3 className="text-center text-white w-9/12 bg-black text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute top-3/4 md:top-3/4">
           {meme.bottomText}
         </h3>
       </div>
