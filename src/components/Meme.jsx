@@ -61,10 +61,10 @@ export default function Meme() {
           alt=""
           className="w-full mt-8 object-cotain rounded-lg shadow-xl"
         />
-        <h3 className="text-center text-white shadow text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute  top-9 md:top-20">
+        <h3 className="text-center text-white text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute  top-9 md:top-20">
           {meme.topText}
         </h3>
-        <h3 className="text-center text-white shadow text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute top-3/4 md:top-3/4">
+        <h3 className="text-center text-white  text-shadow-lg shadow-black text-3xl md:text-5xl uppercase font-Inter font-extrabold absolute top-3/4 md:top-3/4">
           {meme.bottomText}
         </h3>
       </div>
